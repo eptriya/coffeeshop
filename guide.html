@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brewing Guides</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#f5f1ea;
+    }
+
+    .brewing-section{
+      padding:60px 20px;
+      text-align:center;
+    }
+
+    .brewing-section h1{
+      font-size:48px;
+      color:#4b2e2e;
+      margin-bottom:10px;
+    }
+
+    .brewing-section p{
+      font-size:18px;
+      color:#666;
+      margin-bottom:40px;
+    }
+
+    .guide-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      max-width:1100px;
+      margin:auto;
+    }
+
+    .guide-card{
+      background:white;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .guide-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .guide-card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+    }
+
+    .guide-content{
+      padding:20px;
+    }
+
+    .guide-content h2{
+      color:#3b2323;
+      margin-bottom:10px;
+    }
+
+    .guide-content p{
+      color:#777;
+      font-size:15px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:15px;
+      padding:10px 20px;
+      background:#6f4e37;
+      color:white;
+      text-decoration:none;
+      border-radius:30px;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#4b2e2e;
+    }
+  </style>
+</head>
+
+<body>
+
+<section class="brewing-section">
+
+  <h1>Brewing Guides</h1>
+  <p>Learn how to brew the perfect cup of coffee </p>
+
+  <div class="guide-container">
+
+    <div class="guide-card">
+      <img src="darkRoastespresso.jpg" alt="Espresso">
+      <div class="guide-content">
+        <h2>Espresso</h2>
+        <p>Strong and rich coffee brewed with pressure.</p>
+        <a href="coffeeshop.html #loo" class="btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <img src="colombiansupremo.jpg" alt="Cappuccino">
+      <div class="guide-content">
+        <h2>Cappuccino</h2>
+        <p>Perfect balance of espresso, milk and foam.</p>
+        <a href="coffeeshop.html #loo" class="btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <img src="da.jpg" alt="Pour Over">
+      <div class="guide-content">
+        <h2>Pour Over</h2>
+        <p>Clean and smooth manual brewing method.</p>
+        <a href="coffeeshop.html #loo" class="btn">Read More</a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>

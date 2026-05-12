@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Online</title>     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<style>
+    header{
+         background: #161515;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            transition: all 0.4s ease;
+        }
+    
+body{
+    font-family: Arial, sans-serif;
+    background:#f5eee6;
+    margin:0;
+    padding:0;
+    background-image:url(loginbackground.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(15px);
+}
+
+.container{
+    width:90%;
+    max-width:500px;
+    margin:50px auto;
+    background:#ccc;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+
+}
+
+h1{
+    text-align:center;
+    color:#6f4e37;
+    font-family: 'playfair Display'serif;
+    font-weight: bold;
+}
+
+input, select, textarea{
+    width:95%;
+    padding:5px;
+    margin-top:20px;
+    margin-bottom:10px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+    
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#c47b36;
+    color:white;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top: 12px;
+    
+    
+}
+
+button:hover{
+    background:#a45f1f;
+}
+.logo-icon {
+            color: var(--coffee-gold);
+            font-size: 28px;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--coffee-medium);
+            letter-spacing: 1px;
+        }
+        
+        .logo-text span {
+            color: var(--coffee-gold);
+        }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+     <i class="fa-solid fa-mug-hot logo-icon"></i>
+                <div class="logo-text">Brew<span>Haven</span></div><br>
+                <h1>Order Now</h1>
+
+    <form>
+        <input type="text" placeholder=" Enter Your Name" required>
+
+        <input type="tel"  pattern="[0-9] {10}"placeholder="Enter Your 10 Digit Phone Number" required>
+
+        <select required>
+            <option value="">Select Coffee</option>
+            <option>Ethiopian Yirgacheffe</option>
+            <option>Cappuccino</option>
+            <option>Americano</option>
+            <option>Mocha</option>
+            <option>Macchiato Coffee</option>
+            <option>Dalgona Coffee</option>
+            
+            <option>Dark Roast Espresso</option>
+            <option>Colombian Supremo</option>
+
+        </select>
+
+        <textarea rows="4" placeholder="Your Address"></textarea>
+
+        <button type="submit">Place Order</button>
+    </form>
+</div>
+
+</body>
+</html>

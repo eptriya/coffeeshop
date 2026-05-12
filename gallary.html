@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Gallery - BrewHaven | Coffee Moments</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Google Fonts: same as main page for consistency -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coffee-dark: #3E2723;
+            --coffee-medium: #6F4E37;
+            --coffee-light: #C4A484;
+            --coffee-accent: #D2B48C;
+            --coffee-cream: #F5F5DC;
+            --coffee-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --text-light: #f9f6f0;
+            --header-bg: #161515;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0a0a0a;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 88px; /* space for fixed header */
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- IDENTICAL HEADER & NAVBAR (SAME AS MAIN PAGE) ---------- */
+        header {
+            background: var(--header-bg);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 12px 0;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--coffee-gold);
+            font-size: 28px;
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 900;
+            color: #8b5a2b;  /* matching brew color */
+            font-family: 'Playfair Display', serif;
+        }
+        .logo-text span {
+            color: var(--coffee-gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #e0c8a0;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--coffee-gold);
+        }
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coffee-gold);
+            transition: 0.3s;
+        }
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .nav-buttons .btn {
+            padding: 8px 22px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+            text-align: center;
+        }
+        .btn-primary {
+            background: var(--coffee-medium);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--coffee-dark);
+            transform: translateY(-3px);
+        }
+
+        /* ---------- GALLERY SPECIFIC STYLES (enhanced) ---------- */
+        .gallery-hero {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: linear-gradient(135deg, #1a120c 0%, #0a0705 100%);
+            margin-bottom: 30px;
+        }
+        .gallery-title {
+            font-size: 52px;
+            color: var(--coffee-gold);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .gallery-subtitle {
+            color: #cfc5b5;
+            font-size: 18px;
+            max-width: 650px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            display: inline-block;
+            padding-top: 12px;
+        }
+        .gallery-container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto 70px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            padding: 20px 0;
+        }
+        .gallery-card {
+            background: #1e1915;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--coffee-gold);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+        }
+        .gallery-container img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+        .gallery-card:hover img {
+            transform: scale(1.03);
+        }
+        .img-caption {
+            padding: 15px 18px 18px;
+            background: #1e1915;
+        }
+        .img-caption h4 {
+            color: var(--coffee-gold);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .img-caption p {
+            color: #bcae8f;
+            font-size: 13px;
+        }
+
+        /* Footer (same style as main page) */
+        footer {
+            background: var(--coffee-dark);
+            color: var(--text-light);
+            padding: 50px 0 30px;
+            border-top: 4px solid var(--coffee-gold);
+            margin-top: 30px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 22px;
+            position: relative;
+            padding-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 55px;
+            height: 2px;
+            background: var(--coffee-gold);
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-links a {
+            color: var(--coffee-accent);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--coffee-gold);
+            padding-left: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            color: var(--coffee-cream);
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            background: var(--coffee-gold);
+            transform: translateY(-4px);
+            color: #1f1a14;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--coffee-accent);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            body {
+                padding-top: 120px;
+            }
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav ul {
+                justify-content: center;
+                gap: 22px;
+            }
+            .gallery-title {
+                font-size: 38px;
+            }
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 22px;
+            }
+        }
+        @media (max-width: 550px) {
+            .gallery-title {
+                font-size: 32px;
+            }
+            .gallery-container img {
+                height: 240px;
+            }
+            .footer-content {
+                text-align: center;
+            }
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-links li {
+                justify-content: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== IDENTICAL NAVBAR (same as main coffeeshop page) ========== -->
+<header>
+    <div class="container header-container">
+        <a href="coffeeshop.html" class="logo">
+            <i class="fa-solid fa-mug-hot logo-icon"></i>
+            <div class="logo-text">Brew<span>Haven</span></div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="coffeeshop.html#home">Home</a></li>
+                <li><a href="coffeeshop.html#products">Products</a></li>
+                <li><a href="gallary.html" class="active">Gallery</a></li>
+                <li><a href="coffeeshop.html#contact">Contact</a></li>
+                <li><a href="review.html">Reviews</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <a href="order.html" class="btn btn-primary">Order Online</a>
+        </div>
+    </div>
+</header>
+
+<!-- GALLERY SECTION (enhanced with captions & high-quality unsplash images) -->
+<div class="gallery-hero">
+    <h1 class="gallery-title">Our Coffee Gallery</h1>
+    <div class="gallery-subtitle">Visual journey through artisanal brews, cozy corners, and coffee artistry</div>
+</div>
+
+<div class="gallery-container">
+    <!-- Image 1 - Espresso moment -->
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&auto=format" alt="Espresso shot">
+        <div class="img-caption">
+            <h4>Pure Espresso</h4>
+            <p>Rich crema & bold aroma</p>
+        </div>
+    </div>
+    <!-- Image 2 - Latte art -->
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&auto=format" alt="Latte art">
+        <div class="img-caption">
+            <h4>Latte Harmony</h4>
+            <p>Perfect steamed milk balance</p>
+        </div>
+    </div>
+    <!-- Image 3 - Brewing setup -->
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&auto=format" alt="Pour over">
+        <div class="img-caption">
+            <h4>Pour Over Ritual</h4>
+            <p>Precision & patience</p>
+        </div>
+    </div>
+    <!-- Image 4 - Cozy coffee shop interior (using local or fallback) -->
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&auto=format" alt="Cozy cafe">
+        <div class="img-caption">
+            <h4>Warm Ambience</h4>
+            <p>Your second home</p>
+        </div>
+    </div>
+    <!-- Image 5 - Fresh beans -->
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?w=600&auto=format" alt="Coffee beans">
+        <div class="img-caption">
+            <h4>Single Origin Beans</h4>
+            <p>Ethically sourced</p>
+        </div>
+    </div>
+    <!-- Image 6 - Modern coffee bar -->
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&auto=format" alt="Coffee bar">
+        <div class="img-caption">
+            <h4>Barista Station</h4>
+            <p>Crafted with passion</p>
+        </div>
+    </div>
+    <!-- Image 7 - Cappuccino with cinnamon -->
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?w=600&auto=format" alt="Cappuccino">
+        <div class="img-caption">
+            <h4>Velvet Cappuccino</h4>
+            <p>Fluffy foam & cinnamon dust</p>
+        </div>
+    </div>
+    <!-- Image 8 - Outdoor coffee moment -->
+    <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=600&auto=format" alt="Outdoor coffee">
+        <div class="img-caption">
+            <h4>Sunset Sips</h4>
+            <p>Enjoy nature with BrewHaven</p>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER (Same as main page for consistency) -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About BrewHaven</h3>
+                <p style="color: var(--coffee-accent); margin-bottom: 20px;">Artisan coffee roasters dedicated to quality, sustainability, and the perfect cup.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="coffeeshop.html#products">Coffee Blends</a></li>
+                    <li><a href="guide.html">Brewing Guides</a></li>
+                    <li><a href="coffeeshop.html#sustainability">Sustainability</a></li>
+                    <li><a href="coffeeshop.html#wholesale">Wholesale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Coffee Lane, Kochi, IN</li>
+                    <li><i class="fas fa-phone"></i> (+91) 123-456789</li>
+                    <li><i class="fas fa-envelope"></i> hello@brewhaven.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Sat: 7am - 8pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 BrewHaven Coffee Roasters. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- Simple JavaScript for consistent active nav and smooth scroll -->
+<script>
+    (function() {
+        // Set active gallery link styling
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === 'gallary.html' || (href && href.includes('gallary'))) {
+                link.style.color = '#D4AF37';
+                link.style.fontWeight = 'bold';
+            }
+            if (currentPage === 'gallary.html' && href === 'gallary.html') {
+                link.style.color = '#D4AF37';
+                link.style.borderBottom = '2px solid #D4AF37';
+            }
+        });
+        
+        // Smooth scroll for any anchor linking to main page sections (preserve)
+        const allAnchors = document.querySelectorAll('a[href^="coffeeshop.html#"]');
+        allAnchors.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                let targetSection = this.getAttribute('href').split('#')[1];
+                if (targetSection) {
+                    e.preventDefault();
+                    window.location.href = 'coffeeshop.html#' + targetSection;
+                }
+            });
+        });
+        
+        // tiny hover effect on gallery cards already via CSS, but ensure consistency
+        console.log("Gallery page with unified BrewHaven navbar");
+    })();
+</script>
+</body>
+</html>

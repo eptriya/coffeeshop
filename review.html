@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Reviews - BrewHaven | Customer Stories</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Google Fonts: same as main page -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coffee-dark: #3E2723;
+            --coffee-medium: #6F4E37;
+            --coffee-light: #C4A484;
+            --coffee-accent: #D2B48C;
+            --coffee-cream: #F5F5DC;
+            --coffee-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --text-light: #f9f6f0;
+            --header-bg: #161515;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0a0a0a;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 88px;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== IDENTICAL HEADER & NAVBAR (SAME AS MAIN PAGE & GALLERY) ========== */
+        header {
+            background: var(--header-bg);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 12px 0;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--coffee-gold);
+            font-size: 28px;
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 900;
+            color: #8b5a2b;
+            font-family: 'Playfair Display', serif;
+        }
+        .logo-text span {
+            color: var(--coffee-gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #e0c8a0;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--coffee-gold);
+        }
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coffee-gold);
+            transition: 0.3s;
+        }
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .nav-buttons .btn {
+            padding: 8px 22px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+            text-align: center;
+        }
+        .btn-primary {
+            background: var(--coffee-medium);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--coffee-dark);
+            transform: translateY(-3px);
+        }
+
+        /* ========== REVIEWS HERO SECTION ========== */
+        .reviews-hero {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: linear-gradient(135deg, #1a120c 0%, #0a0705 100%);
+            margin-bottom: 30px;
+        }
+        .reviews-title {
+            font-size: 52px;
+            color: var(--coffee-gold);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .reviews-subtitle {
+            color: #cfc5b5;
+            font-size: 18px;
+            max-width: 650px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            display: inline-block;
+            padding-top: 12px;
+        }
+
+        /* ========== REVIEWS GRID (similar to gallery cards) ========== */
+        .review-container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto 70px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .review-card {
+            background: #1e1915;
+            border-radius: 24px;
+            padding: 28px 24px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(2px);
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--coffee-gold);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+            background: #231e19;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .review-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--coffee-gold);
+            background: #2c241e;
+        }
+
+        .reviewer-info h2 {
+            color: var(--coffee-gold);
+            font-size: 22px;
+            margin-bottom: 5px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .verified-badge {
+            font-size: 12px;
+            color: #a0a080;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .verified-badge i {
+            font-size: 12px;
+            color: #4caf50;
+        }
+
+        .stars {
+            color: var(--coffee-gold);
+            margin-bottom: 18px;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .review-card p {
+            color: #e2d9cc;
+            line-height: 1.7;
+            font-size: 15px;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: #8b7a64;
+            margin-top: 12px;
+            display: flex;
+            justify-content: flex-end;
+            border-top: 1px dashed rgba(212, 175, 55, 0.3);
+            padding-top: 12px;
+        }
+
+        /* rating highlight */
+        .fa-star, .fa-star-half-alt {
+            color: var(--coffee-gold);
+        }
+        .fa-star-half-alt {
+            opacity: 0.9;
+        }
+
+        /* ========== FOOTER (SAME AS MAIN PAGE) ========== */
+        footer {
+            background: var(--coffee-dark);
+            color: var(--text-light);
+            padding: 50px 0 30px;
+            border-top: 4px solid var(--coffee-gold);
+            margin-top: 30px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 22px;
+            position: relative;
+            padding-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 55px;
+            height: 2px;
+            background: var(--coffee-gold);
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-links a {
+            color: var(--coffee-accent);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--coffee-gold);
+            padding-left: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            color: var(--coffee-cream);
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            background: var(--coffee-gold);
+            transform: translateY(-4px);
+            color: #1f1a14;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--coffee-accent);
+            font-size: 14px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 850px) {
+            body {
+                padding-top: 120px;
+            }
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav ul {
+                justify-content: center;
+                gap: 22px;
+            }
+            .reviews-title {
+                font-size: 38px;
+            }
+            .review-container {
+                grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+                gap: 22px;
+            }
+        }
+        @media (max-width: 550px) {
+            .reviews-title {
+                font-size: 32px;
+            }
+            .review-card {
+                padding: 22px 18px;
+            }
+            .review-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-content {
+                text-align: center;
+            }
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-links li {
+                justify-content: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== IDENTICAL NAVBAR (SAME AS MAIN COFFEESHOP PAGE & GALLERY) ========== -->
+<header>
+    <div class="container header-container">
+        <a href="coffeeshop.html" class="logo">
+            <i class="fa-solid fa-mug-hot logo-icon"></i>
+            <div class="logo-text">Brew<span>Haven</span></div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="coffeeshop.html#home">Home</a></li>
+                <li><a href="coffeeshop.html#products">Products</a></li>
+                <li><a href="gallary.html">Gallery</a></li>
+                <li><a href="coffeeshop.html#contact">Contact</a></li>
+                <li><a href="review.html" class="active">Reviews</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <a href="order.html" class="btn btn-primary">Order Online</a>
+        </div>
+    </div>
+</header>
+
+<!-- REVIEWS HERO SECTION -->
+<div class="reviews-hero">
+    <h1 class="reviews-title">Customer Reviews</h1>
+    <div class="reviews-subtitle">Real experiences from our coffee community</div>
+</div>
+
+<!-- REVIEWS GRID - Enhanced with realistic customer feedback -->
+<div class="review-container">
+    <!-- Review 1 - Maria George -->
+    <div class="review-card">
+        <div class="review-header">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria George">
+            <div class="reviewer-info">
+                <h2>Maria George</h2>
+                <div class="verified-badge"><i class="fas fa-check-circle"></i> Verified Buyer</div>
+            </div>
+        </div>
+        <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </div>
+        <p>"Absolutely loved the coffee and ambience. The Ethiopian Yirgacheffe is a game-changer — floral notes and perfect acidity. Their brewing guide helped me make the perfect cup at home. Will definitely reorder!"</p>
+        <div class="review-date"><i class="far fa-calendar-alt"></i> February 2026</div>
+    </div>
+
+    <!-- Review 2 - Noel Thomas -->
+    <div class="review-card">
+        <div class="review-header">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Noel Thomas">
+            <div class="reviewer-info">
+                <h2>Noel Thomas</h2>
+                <div class="verified-badge"><i class="fas fa-check-circle"></i> Coffee Lover</div>
+            </div>
+        </div>
+        <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </div>
+        <p>"Best cold coffee I've had in a long time! The service was quick and friendly. The Dalgona coffee is pure bliss — light and creamy. Shipping was fast, and beans arrived fresh. One small suggestion: more decaf options."</p>
+        <div class="review-date"><i class="far fa-calendar-alt"></i> January 2026</div>
+    </div>
+
+    <!-- Review 3 - Rachel Mathew -->
+    <div class="review-card">
+        <div class="review-header">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Rachel Mathew">
+            <div class="reviewer-info">
+                <h2>Rachel Mathew</h2>
+                <div class="verified-badge"><i class="fas fa-check-circle"></i> Café Regular</div>
+            </div>
+        </div>
+        <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </div>
+        <p>"Beautiful interior and premium quality coffee. Perfect place to relax and work. Their Dark Roast Espresso has the perfect crema — bold but not bitter. Plus, the staff remembers my order every time! 10/10 experience."</p>
+        <div class="review-date"><i class="far fa-calendar-alt"></i> March 2026</div>
+    </div>
+
+    <!-- Review 4 - Additional (Arjun Nair) for more content -->
+    <div class="review-card">
+        <div class="review-header">
+            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Arjun Nair">
+            <div class="reviewer-info">
+                <h2>Arjun Nair</h2>
+                <div class="verified-badge"><i class="fas fa-check-circle"></i> Home Barista</div>
+            </div>
+        </div>
+        <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-alt"></i>
+        </div>
+        <p>"The Colombian Supremo beans are incredibly smooth with caramel sweetness. Makes the best morning Americano. BrewHaven's commitment to sustainability impressed me — eco-friendly packaging and direct trade. Highly recommend!"</p>
+        <div class="review-date"><i class="far fa-calendar-alt"></i> February 2026</div>
+    </div>
+
+    <!-- Review 5 - Sneha Eldhose -->
+    <div class="review-card">
+        <div class="review-header">
+            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Sneha Eldhose">
+            <div class="reviewer-info">
+                <h2>Sneha Eldhose</h2>
+                <div class="verified-badge"><i class="fas fa-check-circle"></i> Mocha Lover</div>
+            </div>
+        </div>
+        <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </div>
+        <p>"Hands down the best Mocha in town! The chocolate and espresso balance is perfect — not too sweet. Their gallery page made me visit the cafe, and the cozy vibe exceeded expectations. Keep up the amazing work, BrewHaven!"</p>
+        <div class="review-date"><i class="far fa-calendar-alt"></i> March 2026</div>
+    </div>
+
+    <!-- Review 6 - Vishal Menon -->
+    <div class="review-card">
+        <div class="review-header">
+            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Vishal Menon">
+            <div class="reviewer-info">
+                <h2>Vishal Menon</h2>
+                <div class="verified-badge"><i class="fas fa-check-circle"></i> Wholesale Partner</div>
+            </div>
+        </div>
+        <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </div>
+        <p>"We serve BrewHaven beans at our café, and customers constantly compliment the quality. The consistency and roast profiles are top-tier. Plus, their wholesale support is fantastic — timely delivery and fair pricing."</p>
+        <div class="review-date"><i class="far fa-calendar-alt"></i> January 2026</div>
+    </div>
+</div>
+
+<!-- FOOTER (Identical to main page & gallery) -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About BrewHaven</h3>
+                <p style="color: var(--coffee-accent); margin-bottom: 20px;">Artisan coffee roasters dedicated to quality, sustainability, and the perfect cup.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="coffeeshop.html#products">Coffee Blends</a></li>
+                    <li><a href="guide.html">Brewing Guides</a></li>
+                    <li><a href="coffeeshop.html#sustainability">Sustainability</a></li>
+                    <li><a href="coffeeshop.html#wholesale">Wholesale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Coffee Lane, Kochi, IN</li>
+                    <li><i class="fas fa-phone"></i> (+91) 123-456789</li>
+                    <li><i class="fas fa-envelope"></i> hello@brewhaven.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Sat: 7am - 8pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 BrewHaven Coffee Roasters. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript for active nav state and smooth interactions -->
+<script>
+    (function() {
+        // Highlight active review link
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === 'review.html' || (href && href.includes('review'))) {
+                link.style.color = '#D4AF37';
+                link.style.fontWeight = 'bold';
+            }
+            if (currentPage === 'review.html' && href === 'review.html') {
+                link.style.color = '#D4AF37';
+                link.style.borderBottom = '2px solid #D4AF37';
+            }
+        });
+
+        // Smooth scroll + anchor handling for footer & main page sections
+        const footerLinks = document.querySelectorAll('a[href*="coffeeshop.html#"]');
+        footerLinks.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                let targetSection = this.getAttribute('href').split('#')[1];
+                if (targetSection) {
+                    e.preventDefault();
+                    window.location.href = 'coffeeshop.html#' + targetSection;
+                }
+            });
+        });
+
+        // Star ratings hover effect just for UI delight (no backend)
+        console.log("Reviews page - fully aligned with BrewHaven brand");
+    })();
+</script>
+</body>
+</html>
