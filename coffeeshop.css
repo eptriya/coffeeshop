@@ -170,6 +170,11 @@
             flex: 1;
             color: var(--text-light);
             animation: fadeInUp 0.9s ease;
+            background-image:url("front.jpg");
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-position:left;
+            background-attachment:fixed;
         }
         .hero-subtitle {
             font-size: 18px;
