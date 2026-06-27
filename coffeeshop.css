@@ -164,7 +164,7 @@
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            gap:0;
+            gap:40;
         }
         .hero-content {
             flex: 1;
@@ -175,8 +175,8 @@
         }
          .hero-image
           {
-          width:55%;
-          height:650%px;
+          width:60%;
+          height:700%px;
           margin-left:auto;
           }
 .hero-image img {
